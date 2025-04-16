@@ -23,75 +23,107 @@
  *
  */
 
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
 
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
-];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
+// Import music data at the top level
+import musicCatalog from './data.js';
 
-// This function adds cards the page to display the data in the array
-function showCards() {
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
-
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
-
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
+// DOM elements and functions
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the catalog page
+    if (document.querySelector('.catalog-page')) {
+        const tracksContainer = document.getElementById('tracks-container');
+        const searchInput = document.getElementById('search-input');
+        const genreFilter = document.getElementById('genre-filter');
+        const sortOptions = document.getElementById('sort-options');
+        
+        // Populate genres dropdown
+        function populateGenres() {
+            const genres = [...new Set(musicCatalog.map(track => track.genre))];
+            genres.forEach(genre => {
+                const option = document.createElement('option');
+                option.value = genre;
+                option.textContent = genre;
+                genreFilter.appendChild(option);
+            });
+        }
+        
+        // Display tracks
+        function displayTracks(tracks) {
+            tracksContainer.innerHTML = '';
+            
+            tracks.forEach((track, index) => {
+                const trackElement = document.createElement('div');
+                trackElement.className = 'track-item';
+                
+                trackElement.innerHTML = `
+                    <div class="track-number">${index + 1}</div>
+                    <div class="track-info">
+                        <img src="${track.coverImage}" alt="${track.title}" class="track-image">
+                        <div class="track-details">
+                            <div class="track-name">${track.title}</div>
+                            <div class="track-artist">${track.artist}</div>
+                        </div>
+                    </div>
+                    <div class="track-album">${track.album}</div>
+                    <div class="track-duration">${track.duration}</div>
+                `;
+                
+                tracksContainer.appendChild(trackElement);
+            });
+        }
+        
+        // Filter tracks based on search input and genre selection
+        function filterTracks() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedGenre = genreFilter.value;
+            
+            let filteredTracks = musicCatalog.filter(track => {
+                const matchesSearch = 
+                    track.title.toLowerCase().includes(searchTerm) || 
+                    track.artist.toLowerCase().includes(searchTerm) ||
+                    track.album.toLowerCase().includes(searchTerm);
+                    
+                const matchesGenre = selectedGenre === '' || track.genre === selectedGenre;
+                
+                return matchesSearch && matchesGenre;
+            });
+            
+            // Apply sorting
+            const sortValue = sortOptions.value;
+            if (sortValue === 'title-asc') {
+                filteredTracks.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (sortValue === 'title-desc') {
+                filteredTracks.sort((a, b) => b.title.localeCompare(a.title));
+            } else if (sortValue === 'duration-asc') {
+                filteredTracks.sort((a, b) => {
+                    const aDuration = convertDurationToSeconds(a.duration);
+                    const bDuration = convertDurationToSeconds(b.duration);
+                    return aDuration - bDuration;
+                });
+            } else if (sortValue === 'duration-desc') {
+                filteredTracks.sort((a, b) => {
+                    const aDuration = convertDurationToSeconds(a.duration);
+                    const bDuration = convertDurationToSeconds(b.duration);
+                    return bDuration - aDuration;
+                });
+            }
+            
+            displayTracks(filteredTracks);
+        }
+        
+        // Helper function to convert MM:SS to seconds
+        function convertDurationToSeconds(duration) {
+            const [minutes, seconds] = duration.split(':').map(Number);
+            return minutes * 60 + seconds;
+        }
+        
+        // Event listeners
+        searchInput.addEventListener('input', filterTracks);
+        genreFilter.addEventListener('change', filterTracks);
+        sortOptions.addEventListener('change', filterTracks);
+        
+        // Initialize
+        populateGenres();
+        displayTracks(musicCatalog);
     }
-
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
-  }
-}
-
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
-
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
-
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
-}
-
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
-
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-  );
-}
-
-function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
-}
+});

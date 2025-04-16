@@ -1,31 +1,25 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Catalog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="landing-page">
+    <div class="landing-container">
+        <h1 class="landing-title">Beatbase</h1>
+        <p class="landing-subtitle">Explore my favorite tracks, artists and albums</p>
+        <a href="catalog.html" class="enter-button">Enter Catalog</a>
+    </div>
+    
+    <footer class="landing-footer">
+        <p>Created with Spotify data</p>
+    </footer>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>

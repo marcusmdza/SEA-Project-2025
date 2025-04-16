@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Catalog - Tracks</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="catalog-page">
+    <header class="catalog-header">
+        <div class="header-left">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1>Top tracks this month</h1>
+        </div>
+        <div class="header-actions">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search tracks...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="filter-container">
+                <select id="genre-filter">
+                    <option value="">All Genres</option>
+                    <!-- Will be populated with JS -->
+                </select>
+                <select id="sort-options">
+                    <option value="default">Sort by: Default</option>
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                    <option value="duration-asc">Duration (Short to Long)</option>
+                    <option value="duration-desc">Duration (Long to Short)</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="catalog-container">
+        <div class="tracks-header">
+            <div class="track-number">#</div>
+            <div class="track-info">Title</div>
+            <div class="track-album">Album</div>
+            <div class="track-duration">
+                <i class="far fa-clock"></i>
+            </div>
+        </div>
+        
+        <div id="tracks-container">
+            <!-- Tracks will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <script src="data.js" type="module"></script>
+    <script src="scripts.js" type="module"></script>
+</body>
+</html>
