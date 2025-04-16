@@ -1,7 +1,7 @@
-# Melodify - Interactive Music Catalog
+# BeatBase - Interactive Music Catalog
 
 ## Project Overview
-Melodify is a web-based music catalog that showcases a collection of songs using data from Spotify. The application features a landing page with an intuitive interface and a catalog page that displays tracks in a format similar to popular streaming services.
+BeatBase is a web-based music catalog that showcases a collection of songs using data from Spotify. The application features a landing page with an intuitive interface and a catalog page that displays tracks in a format similar to popular streaming services.
 
 ## Features
 - **Landing Page**: Welcoming introduction with a clean, modern design
@@ -45,11 +45,6 @@ This project was developed as part of a web development assignment focusing on d
 - [MDN Array Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - [MDN Object Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 - [JavaScript Array Methods](https://www.w3schools.com/js/js_array_methods.asp)
-
-### API Integration
-- [MDN Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [Working with APIs in JavaScript](https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/)
-- [Spotify Web API](https://developer.spotify.com/documentation/web-api)
 
 ### Responsive Design
 - [MDN Responsive Design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
