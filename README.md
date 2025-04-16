@@ -48,15 +48,6 @@ This project was developed for the Snap SEA 2025 Project focusing on data struct
 - [W3Schools Responsive Web Design](https://www.w3schools.com/css/css_rwd_intro.asp)
 - [CSS Media Queries](https://css-tricks.com/a-complete-guide-to-css-media-queries/)
 
-## How to Run the Project
-1. Clone the repository
-2. Open the project directory
-3. Use a local server (recommended):
-   ```
-   npx http-server
-   ```
-4. Open your browser and navigate to http://localhost:8080 (or the port shown in the terminal)
-
 ## Future Improvements
 - Add a "favorites" feature to let users save their preferred tracks
 - Include audio previews of tracks
