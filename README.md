@@ -1,4 +1,4 @@
-# BeatBase - Interactive Music Catalog
+# SEA 2025 Project: BeatBase - Interactive Music Catalog
 
 ## Project Overview
 BeatBase is a web-based music catalog that showcases a collection of songs using data from Spotify. The application features a landing page with an intuitive interface and a catalog page that displays tracks in a format similar to popular streaming services.
