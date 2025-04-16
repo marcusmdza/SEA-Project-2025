@@ -14,19 +14,18 @@ BeatBase is a web-based music catalog that showcases a collection of songs using
 ## Technologies Used
 - **HTML5**: Structure and content
 - **CSS3**: Styling and animations
-- **JavaScript (ES6+)**: Dynamic content and user interactions
+- **JavaScript**: Dynamic content and user interactions
 - **Spotify API**: One-time data fetch to populate the catalog
 
 ## How It Works
 The application uses arrays and objects to store and manipulate the music data. The catalog implements multiple operations on this data, including filtering, searching, and sorting, providing users with a dynamic and interactive experience.
 
 ## Development Process
-This project was developed as part of a web development assignment focusing on data structures and DOM manipulation. The data was fetched once from the Spotify API and stored locally to avoid making live API calls.
+This project was developed for the Snap SEA 2025 Project focusing on data structures and DOM manipulation. The data was fetched once from the Spotify and stored locally in the data.js file.
 
 ## Learning Resources
 
 ### HTML
-- [MDN HTML Guide](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [W3Schools HTML Tutorial](https://www.w3schools.com/html/)
 - [HTML.com](https://html.com/)
 
@@ -39,12 +38,10 @@ This project was developed as part of a web development assignment focusing on d
 - [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [W3Schools JavaScript Tutorial](https://www.w3schools.com/js/)
 - [JavaScript.info](https://javascript.info/)
-- [Eloquent JavaScript Book](https://eloquentjavascript.net/)
 
 ### Data Structures in JavaScript
 - [MDN Array Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - [MDN Object Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
-- [JavaScript Array Methods](https://www.w3schools.com/js/js_array_methods.asp)
 
 ### Responsive Design
 - [MDN Responsive Design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)

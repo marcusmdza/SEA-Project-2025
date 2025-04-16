@@ -29,14 +29,14 @@ import musicCatalog from './data.js';
 
 // DOM elements and functions
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we're on the catalog page
+    // check if we're on the catalog page
     if (document.querySelector('.catalog-page')) {
         const tracksContainer = document.getElementById('tracks-container');
         const searchInput = document.getElementById('search-input');
         const genreFilter = document.getElementById('genre-filter');
         const sortOptions = document.getElementById('sort-options');
         
-        // Populate genres dropdown
+        // populate genres dropdown
         function populateGenres() {
             const genres = [...new Set(musicCatalog.map(track => track.genre))];
             genres.forEach(genre => {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Display tracks
+        // display tracks
         function displayTracks(tracks) {
             tracksContainer.innerHTML = '';
             
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Filter tracks based on search input and genre selection
+        // filter tracks based on search input and genre selection
         function filterTracks() {
             const searchTerm = searchInput.value.toLowerCase();
             const selectedGenre = genreFilter.value;
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return matchesSearch && matchesGenre;
             });
             
-            // Apply sorting
+            // apply sorting
             const sortValue = sortOptions.value;
             if (sortValue === 'title-asc') {
                 filteredTracks.sort((a, b) => a.title.localeCompare(b.title));
@@ -111,18 +111,18 @@ document.addEventListener('DOMContentLoaded', function() {
             displayTracks(filteredTracks);
         }
         
-        // Helper function to convert MM:SS to seconds
+        // helper function to convert MM:SS to seconds
         function convertDurationToSeconds(duration) {
             const [minutes, seconds] = duration.split(':').map(Number);
             return minutes * 60 + seconds;
         }
         
-        // Event listeners
+        // event listeners
         searchInput.addEventListener('input', filterTracks);
         genreFilter.addEventListener('change', filterTracks);
         sortOptions.addEventListener('change', filterTracks);
         
-        // Initialize
+        // initialize
         populateGenres();
         displayTracks(musicCatalog);
     }
